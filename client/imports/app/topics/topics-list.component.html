@@ -1,0 +1,8 @@
+<div *ngIf="!user">Please, log in</div>
+<div>
+  <ul>
+    <li *ngFor="let topic of topics | async"> <!-- async pipe documentation-->
+      <a [routerLink]="['/topic', topic._id]">{{topic.name}}</a>
+    </li>
+  </ul>
+</div>

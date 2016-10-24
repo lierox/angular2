@@ -1,0 +1,10 @@
+<div>
+  <comments-form></comments-form>
+
+  <ul>
+    <li *ngFor="let comment of comments | async"> <!-- async pipe documentation-->
+      <p>{{comment.description}}</p>
+       <button (click)="removeComment(comment)">X</button>
+    </li>
+  </ul>
+</div>

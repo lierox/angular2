@@ -1,0 +1,12 @@
+<header *ngIf="topic">
+  <h1>Details of {{topic.name}}</h1>
+
+  <!---->
+  <ul>
+    <li *ngFor="let comment of comments | async"> <!-- async pipe documentation-->
+      <p>{{comment.description}}</p>
+      <button (click)="removeComment(comment)">X</button>
+    </li>
+  </ul>
+  <comments-form></comments-form>
+</header>

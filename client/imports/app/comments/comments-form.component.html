@@ -1,0 +1,7 @@
+<form [formGroup]="addForm" (ngSubmit)="addComment()">
+
+  <label>Description</label>
+  <input type="text" formControlName="description">
+
+  <button type="submit">Add</button>
+</form>
