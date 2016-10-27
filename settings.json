@@ -1,8 +1,0 @@
-{
-  "galaxy.meteor.com": {
-     "env": {
-       "ROOT_URL": "http://angulardeploygalaxy.meteorapp.com",
-       "MONGO_URL": "mongodb://angular2admin:666666Aa@ds031617.mlab.com:31617/angular2"
-     }
-   }
-}
