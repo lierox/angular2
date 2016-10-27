@@ -16,6 +16,7 @@ export class CommentsFormComponent implements OnInit {
   addForm: FormGroup;
   topicId: string;
   paramsSub: Subscription;
+  owner: string;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -32,6 +33,10 @@ export class CommentsFormComponent implements OnInit {
     this.addForm = this.formBuilder.group({
       description: ['', Validators.required]
     });
+    this.owner = Meteor.user()['emails'][0]['address'];
+  }
+
+  ngOnDestroy() {
   }
 
   addComment(): void {
@@ -42,7 +47,7 @@ export class CommentsFormComponent implements OnInit {
     }
 
     if (this.addForm.valid) {
-      Comments.insert({topic_id: this.topicId, description: this.addForm.value.description, owner:Meteor.userId()});
+      Comments.insert({topic_id: this.topicId, description: this.addForm.value.description, owner:this.owner});
 
       this.addForm.reset();
     }
