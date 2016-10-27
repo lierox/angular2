@@ -55,7 +55,12 @@ export class TopicDetailsComponent implements OnInit, OnDestroy{
 
     removeComment(comment: Comment): void {
         if(!Meteor.userId()) {
-            alert('Please log in to add a party');
+            alert('Please log in to remove a party');
+            return;
+        }
+
+        if(Meteor.user()['emails'][0]['address']!==comment.owner) {
+            alert('Comment does not belog to you');
             return;
         }
         Comments.remove(comment._id);
