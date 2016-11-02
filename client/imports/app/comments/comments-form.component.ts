@@ -14,9 +14,11 @@ import template from './comments-form.component.html';
 })
 export class CommentsFormComponent implements OnInit {
   addForm: FormGroup;
-  topicId: string;
+  userId: string;
   paramsSub: Subscription;
   owner: string;
+  date: Date;
+  dateString: string;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -25,9 +27,9 @@ export class CommentsFormComponent implements OnInit {
 
   ngOnInit() {
       this.paramsSub = this.route.params
-      .map(params => params['topicId'])
-      .subscribe(topicId => {
-       this.topicId = topicId
+      .map(params => params['userId'])
+      .subscribe(userId => {
+       this.userId = userId
      });
 
     this.addForm = this.formBuilder.group({
@@ -40,14 +42,13 @@ export class CommentsFormComponent implements OnInit {
   }
 
   addComment(): void {
-
     if(!Meteor.userId()) {
         alert('Please log in to add a party');
         return;
     }
 
     if (this.addForm.valid) {
-      Comments.insert({topic_id: this.topicId, description: this.addForm.value.description, owner:this.owner});
+      Comments.insert({description: this.addForm.value.description, owner:this.owner, date:new Date()});
 
       this.addForm.reset();
     }

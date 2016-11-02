@@ -1,0 +1,9 @@
+<div *ngIf="!user">Please, log in</div>
+
+<div>
+  <div class="row">
+    <div *ngFor="let user of users | async" class="col-sm-5" style="background-color:#efefef; height:120px;border: 2px solid CadetBlue;margin-top: 30px;margin-left: 70px;">
+        <a style="display: block;height: 100%;width: 100%;text-decoration: none;" [routerLink]="['/user', user._id]">{{user['emails'][0]['address']}}</a>
+    </div>
+  </div>
+</div>

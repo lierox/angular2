@@ -8,7 +8,8 @@ import { AccountsModule } from 'angular2-meteor-accounts-ui';
 import { AppComponent } from './app.component';
 import { routes, ROUTES_PROVIDERS } from './app.routes';
 import { COMMENTS_DECLARATIONS } from './comments';
-import { TOPICS_DECLARATIONS } from './topics';
+import { TASKS_DECLARATIONS } from './tasks';
+import { USERS_DECLARATIONS } from './users';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { TOPICS_DECLARATIONS } from './topics';
   declarations: [
     AppComponent,
     ...COMMENTS_DECLARATIONS,
-    ...TOPICS_DECLARATIONS
+    ...TASKS_DECLARATIONS,
+    ...USERS_DECLARATIONS
   ],
   providers: [
     ...ROUTES_PROVIDERS

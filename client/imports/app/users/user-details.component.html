@@ -1,0 +1,25 @@
+<header *ngIf="user">
+    <h1>Details of {{user['emails'][0]['address']}}</h1>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div style="border: 2px solid #bcbcbc;border-radius: 3px;background-color: #dedede;margin-bottom: 10px;" *ngFor="let comment of comments | async">
+                <p>{{comment.description}}</p>
+                <p>{{comment.owner}}</p>
+                <p>{{comment.date | date:'medium'}}</p>
+                <button (click)="removeComment(comment)">X</button>
+            </div>
+            <comments-form></comments-form>
+        </div>
+
+        <div class="col-sm-6">
+            <div style="border: 2px solid #bcbcbc;border-radius: 3px;background-color: #dedede;margin-bottom: 10px;" *ngFor="let task of tasks | async">
+                <p>{{task.description}}</p>
+                <p>{{task.from}}</p>
+                <p>{{task.date | date:'medium'}}</p>
+            </div>
+            <tasks-form></tasks-form>
+        </div>
+    </div>
+
+</header>

@@ -1,14 +1,14 @@
 import { Route } from '@angular/router';
 import { Meteor } from 'meteor/meteor';
 
-import { TopicsListComponent } from './topics/topics-list.component';
-import { TopicDetailsComponent } from './topics/topic-details.component';
+import { UsersListComponent } from './users/users-list.component';
+import { UserDetailsComponent } from './users/user-details.component';
 
 
 export const routes: Route[] = [
-  { path: '', redirectTo: '/topic', pathMatch: 'full' },
-  { path: 'topic', component: TopicsListComponent },
-  { path: 'topic/:topicId', component: TopicDetailsComponent, canActivate: ['canActivateForLoggedIn'] }
+  { path: '', redirectTo: '/user', pathMatch: 'full' },
+  { path: 'user', component: UsersListComponent },
+  { path: 'user/:userId', component: UserDetailsComponent, canActivate: ['canActivateForLoggedIn'] }
 ];
 
 export const ROUTES_PROVIDERS = [{
