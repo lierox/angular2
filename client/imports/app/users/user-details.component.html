@@ -2,23 +2,60 @@
     <h1>Details of {{user['emails'][0]['address']}}</h1>
 
     <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-4">
+            <h4>Daily Log</h4>
             <div style="border: 2px solid #bcbcbc;border-radius: 3px;background-color: #dedede;margin-bottom: 10px;" *ngFor="let comment of comments | async">
                 <p>{{comment.description}}</p>
                 <p>{{comment.owner}}</p>
                 <p>{{comment.date | date:'medium'}}</p>
-                <button (click)="removeComment(comment)">X</button>
+                <div class="row">
+                    <div class="col-sm-9">
+                    </div>
+                    <div class="col-sm-3">
+                        <button style="margin-bottom:8px;"class="btn btn-danger btn-sm" (click)="removeComment(comment)">Delete</button>
+                    </div>
+                </div>
+
             </div>
             <comments-form></comments-form>
         </div>
 
-        <div class="col-sm-6">
-            <div style="border: 2px solid #bcbcbc;border-radius: 3px;background-color: #dedede;margin-bottom: 10px;" *ngFor="let task of tasks | async">
-                <p>{{task.description}}</p>
-                <p>{{task.from}}</p>
-                <p>{{task.date | date:'medium'}}</p>
+        <div class="col-sm-4">
+            <h4>Waiting Tasks</h4>
+            <div *ngFor="let task of tasks | async">
+                <div *ngIf="task.done == false" style="border: 2px solid #bcbcbc;border-radius: 3px;background-color: #dedede;margin-bottom: 10px;">
+                    <p>{{task.description}}</p>
+                    <p>{{task.from}}</p>
+                    <p>{{task.date | date:'medium'}}</p>
+                    <div class="row">
+                        <div class="col-sm-7">
+                        </div>
+                        <div class="col-sm-5">
+                            <button style="margin-bottom:8px;" class="btn btn-primary btn-sm" (click)="setStateTask(task)">Done</button>
+                            <button style="margin-bottom:8px;"  class="btn btn-danger btn-sm" (click)="removeTask(task)">Delete</button>
+                        </div>
+                    </div>
+                </div>
             </div>
             <tasks-form></tasks-form>
+        </div>
+
+        <div class="col-sm-4">
+            <h4>Completed Tasks</h4>
+            <div *ngFor="let task of tasks | async">
+                <div *ngIf="task.done == true" style="border: 2px solid #bcbcbc;border-radius: 3px;background-color: #dedede;margin-bottom: 10px;">
+                    <p>{{task.description}}</p>
+                    <p>{{task.from}}</p>
+                    <p>{{task.date | date:'medium'}}</p>
+                    <div class="row">
+                        <div class="col-sm-9">
+                        </div>
+                        <div class="col-sm-3">
+                            <button style="margin-bottom:8px;" class="btn btn-warning btn-sm" (click)="setStateTask(task)">Back</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 

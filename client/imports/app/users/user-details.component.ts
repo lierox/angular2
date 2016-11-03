@@ -69,14 +69,43 @@ export class UserDetailsComponent implements OnInit, OnDestroy{
 
     removeComment(comment: Comment): void {
         if(!Meteor.userId()) {
-            alert('Please log in to remove a party');
+            alert('Please log in to remove a log');
             return;
         }
 
         if(Meteor.user()['emails'][0]['address']!==comment.owner) {
-            alert('Comment does not belog to you');
+            alert('Log does not belog to you');
             return;
         }
         Comments.remove(comment._id);
+    }
+
+    removeTask(task: Task): void {
+        if(!Meteor.userId()) {
+            alert('Please log in to remove a task');
+            return;
+        }
+
+        if(Meteor.user()['emails'][0]['address']!==task.from) {
+            alert('Task does not assigned by you');
+            return;
+        }
+        Tasks.remove(task._id);
+    }
+
+    setStateTask(task: Task): void {
+        if(!Meteor.userId()) {
+            alert('Please log in to change state of task');
+            return;
+        }
+
+        if(Meteor.user()['emails'][0]['address']!==task.to) {
+            alert('Task state cannot be changed by you');
+            return;
+        }
+        Tasks.update(task._id, {
+            $set: { done: !task.done },
+        });
+        console.log(task.done);
     }
 }

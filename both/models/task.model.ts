@@ -5,4 +5,5 @@ export interface Task extends CollectionObject {
   to: string;
   from: string;
   date: Date;
+  done: boolean;
 }

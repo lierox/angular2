@@ -1,9 +1,19 @@
 <form [formGroup]="addForm" (ngSubmit)="addTask()">
-
-  <label>Description</label>
-  <input type="text" formControlName="description">
-  <label>Task to</label>
-  <input type="text" formControlName="to">
-
-  <button type="submit">Add</button>
+    <div class="row" style="margin-bottom:10px;">
+        <div class="col-sm-6">
+            <label >Description</label>
+        </div>
+        <div class="col-sm-6">
+            <input type="text" formControlName="description">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <label >Task to    </label>
+        </div>
+        <div class="col-sm-6">
+            <input type="text" formControlName="to">
+            <button style="margin-top:8px;" class="btn btn-success" type="submit">Add</button>
+        </div>
+    </div>
 </form>

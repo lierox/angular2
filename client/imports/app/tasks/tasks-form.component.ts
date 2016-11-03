@@ -41,7 +41,7 @@ export class TasksFormComponent implements OnInit {
     }
 
     if (this.addForm.valid) {
-      Tasks.insert({description: this.addForm.value.description, to: this.addForm.value.to, from: this.from, date: new Date()});
+      Tasks.insert({description: this.addForm.value.description, to: this.addForm.value.to, from: this.from, date: new Date(), done:false});
 
       this.addForm.reset();
     }
