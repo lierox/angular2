@@ -93,7 +93,7 @@ export class UserDetailsComponent implements OnInit, OnDestroy{
         Tasks.remove(task._id);
     }
 
-    setStateTask(task: Task): void {
+    setCurrentTask(task: Task): void {
         if(!Meteor.userId()) {
             alert('Please log in to change state of task');
             return;
@@ -104,8 +104,22 @@ export class UserDetailsComponent implements OnInit, OnDestroy{
             return;
         }
         Tasks.update(task._id, {
-            $set: { done: !task.done },
+            $set: { state: "current", date: new Date() },
         });
-        console.log(task.done);
+    }
+
+    setDoneTask(task: Task): void {
+        if(!Meteor.userId()) {
+            alert('Please log in to change state of task');
+            return;
+        }
+
+        if(Meteor.user()['emails'][0]['address']!==task.to) {
+            alert('Task state cannot be changed by you');
+            return;
+        }
+        Tasks.update(task._id, {
+            $set: { state: "done", date: new Date() },
+        });
     }
 }

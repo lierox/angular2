@@ -1,11 +1,5 @@
 <form [formGroup]="addForm" (ngSubmit)="addComment()">
-    <div class="row" style="margin-bottom:10px;">
-        <div class="col-sm-6">
-            <label >Description</label>
-        </div>
-        <div class="col-sm-6">
-            <input type="text" formControlName="description">
-            <button style="margin-top:8px;" class="btn btn-success" type="submit">Log</button>
-        </div>
-    </div>
+    <label>Description</label>
+    <input type="text" formControlName="description">
+    <button class="btn btn-success btn-default" type="submit">Log</button>
 </form>
