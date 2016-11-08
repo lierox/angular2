@@ -3,10 +3,13 @@ import { Meteor } from 'meteor/meteor';
 
 import { UsersListComponent } from './users/users-list.component';
 import { UserDetailsComponent } from './users/user-details.component';
-
+import { RegisterFormComponent } from './auth/register-form.component';
+import { LoginFormComponent } from './auth/login-form.component';
 
 export const routes: Route[] = [
-  { path: '', redirectTo: '/user', pathMatch: 'full' },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'login', component: LoginFormComponent },
+  { path: 'register', component: RegisterFormComponent },
   { path: 'user', component: UsersListComponent },
   { path: 'user/:userId', component: UserDetailsComponent, canActivate: ['canActivateForLoggedIn'] }
 ];

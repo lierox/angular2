@@ -54,10 +54,11 @@
                     <p><b>Manager:</b>{{task.from}}</p>
                     <p><b>Started on:</b>{{task.date | date:'medium'}}</p>
                     <div class="row">
-                        <div class="col-sm-8">
+                        <div class="col-sm-6">
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-6">
                             <button style="margin-bottom:8px;" class="btn btn-success btn-sm" (click)="setDoneTask(task)">Done</button>
+                            <button style="margin-bottom:8px;" class="btn btn-warning btn-sm" (click)="setWaitingTask(task)">Back</button>
                         </div>
                     </div>
                 </div>

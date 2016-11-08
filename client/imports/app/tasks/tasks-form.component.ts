@@ -6,6 +6,11 @@ import { Meteor } from 'meteor/meteor';
 
 import { Tasks } from '../../../../both/collections/tasks.collection';
 
+//
+import { Users } from '../../../../both/collections/users.collection';
+import { User } from '../../../../both/models/user.model';
+//
+
 import template from './tasks-form.component.html';
 
 @Component({
@@ -15,22 +20,35 @@ import template from './tasks-form.component.html';
 export class TasksFormComponent implements OnInit {
   addForm: FormGroup;
   from: string;
-
+  //
+  userId: string;
+  paramsSub: Subscription;
+  user: User;
+  //
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
+      //
+      this.paramsSub = this.route.params
+      .map(params => params['userId'])
+      .subscribe(userId => {
+       this.userId = userId
+
+       this.user = Users.findOne(this.userId);
+     });
+      //
 
     this.addForm = this.formBuilder.group({
-      description: ['', Validators.required],
-      to: ['', Validators.required]
+      description: ['', Validators.required]
     });
     this.from = Meteor.user()['emails'][0]['address'];
   }
 
   ngOnDestroy() {
+      this.paramsSub.unsubscribe();
   }
 
   addTask(): void {
@@ -41,7 +59,7 @@ export class TasksFormComponent implements OnInit {
     }
 
     if (this.addForm.valid) {
-      Tasks.insert({description: this.addForm.value.description, to: this.addForm.value.to, from: this.from, date: new Date(), state:"waiting"});
+      Tasks.insert({description: this.addForm.value.description, to: this.user['emails'][0]['address'], from: this.from, date: new Date(), state:"waiting"});
 
       this.addForm.reset();
     }

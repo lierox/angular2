@@ -52,11 +52,11 @@ export class UserDetailsComponent implements OnInit, OnDestroy{
        });
 
        //
-       this.comments = Comments.find({owner:this.user['emails'][0]['address']}).zone();
+       this.comments = Comments.find({owner:this.user['emails'][0]['address']},{sort:{date: -1}}).zone();
        this.commentsSub = MeteorObservable.subscribe('comments').subscribe();
        //
        //
-       this.tasks = Tasks.find({to:this.user['emails'][0]['address']}).zone();
+       this.tasks = Tasks.find({to:this.user['emails'][0]['address']},{sort:{date: -1}}).zone();
        this.tasksSub = MeteorObservable.subscribe('tasks').subscribe();
        //
     }
@@ -120,6 +120,21 @@ export class UserDetailsComponent implements OnInit, OnDestroy{
         }
         Tasks.update(task._id, {
             $set: { state: "done", date: new Date() },
+        });
+    }
+
+    setWaitingTask(task: Task): void {
+        if(!Meteor.userId()) {
+            alert('Please log in to change state of task');
+            return;
+        }
+
+        if(Meteor.user()['emails'][0]['address']!==task.to) {
+            alert('Task state cannot be changed by you');
+            return;
+        }
+        Tasks.update(task._id, {
+            $set: { state: "waiting", date: new Date() },
         });
     }
 }
