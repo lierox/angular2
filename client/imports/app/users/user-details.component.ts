@@ -27,6 +27,8 @@ import { Task } from '../../../../both/models/task.model';
 })
 export class UserDetailsComponent implements OnInit, OnDestroy{
     userId: string;
+    loggedInUserId: string;
+    userType: string;
     paramsSub: Subscription;
     user: User;
     //
@@ -50,7 +52,8 @@ export class UserDetailsComponent implements OnInit, OnDestroy{
 
          this.user = Users.findOne(this.userId);
        });
-
+       this.loggedInUserId = Meteor.userId();
+       this.userType = Meteor.user().profile.userType;
        //
        this.comments = Comments.find({owner:this.user['emails'][0]['address']},{sort:{date: -1}}).zone();
        this.commentsSub = MeteorObservable.subscribe('comments').subscribe();

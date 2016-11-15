@@ -2,5 +2,9 @@
 <form [formGroup]="registerForm" (ngSubmit)="register()">
     <p>Email: <input type="email" formControlName="email"></p>
     <p>Password: <input type="password" formControlName="password"></p>
+    <p>Register as
+        <input type="radio" formControlName="userType" value="manager" > Manager
+        <input type="radio" formControlName="userType" value="intern"> Intern
+    </p>
     <p><button class="btn btn-success btn-default" type="submit">Register</button></p>
 </form>

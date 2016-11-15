@@ -10,11 +10,17 @@ export const routes: Route[] = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginFormComponent },
   { path: 'register', component: RegisterFormComponent },
-  { path: 'user', component: UsersListComponent },
-  { path: 'user/:userId', component: UserDetailsComponent, canActivate: ['canActivateForLoggedIn'] }
+  { path: 'user', component: UsersListComponent, canActivate: ['canActivateForLoggedIn'] },
+  { path: 'user/:userId', component: UserDetailsComponent, canActivate: ['canActivateForManager'] }
 ];
 
-export const ROUTES_PROVIDERS = [{
+export const ROUTES_PROVIDERS = [
+{
   provide: 'canActivateForLoggedIn',
   useValue: () => !! Meteor.userId()
-}];
+},
+{
+  provide: 'canActivateForManager',
+  useValue: () => !! Meteor.userId()
+}
+];

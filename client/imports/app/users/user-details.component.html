@@ -1,11 +1,11 @@
 <header *ngIf="user">
     <h1>Details of {{user['emails'][0]['address']}}</h1>
     <div class="row"  style="margin-bottom:24px;">
-        <div class="col-sm-6">
+        <div [hidden]="userId !== loggedInUserId" class="col-sm-6">
             <h5><b>Add Log</b></h5>
             <comments-form></comments-form>
         </div>
-        <div class="col-sm-6">
+        <div [hidden]="userType !== 'manager'" class="col-sm-6">
             <h5><b>Add Task</b></h5>
             <tasks-form></tasks-form>
         </div>

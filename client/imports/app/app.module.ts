@@ -10,6 +10,7 @@ import { COMMENTS_DECLARATIONS } from './comments';
 import { TASKS_DECLARATIONS } from './tasks';
 import { USERS_DECLARATIONS } from './users';
 import { AUTH_DECLARATIONS } from './auth';
+//import { AUTH_DECLARATIONS } from './login';
 
 @NgModule({
   imports: [
