@@ -90,7 +90,7 @@ export class UserDetailsComponent implements OnInit, OnDestroy{
         }
 
         if(Meteor.user()['emails'][0]['address']!==task.from) {
-            alert('Task does not assigned by you');
+            alert('Task was not assigned by you');
             return;
         }
         Tasks.remove(task._id);
