@@ -17,10 +17,6 @@
   "files": [
     "typings.d.ts"
   ],
-
-  "filesGlob": [
-    "**/*.ts"
-  ],
   "compileOnSave": false,
   "angularCompilerOptions": {
     "genDir": "aot",
