@@ -3,10 +3,12 @@
     <div class="navbar-header">
       <a class="navbar-brand" href="#">InternPro</a>
     </div>
-    <ul class="nav navbar-nav">
-      <li class="navbar-right-container"><login-buttons></login-buttons></li>
+    <ul class="nav navbar-nav navbar-right-container">
+        {{user}}
+    </li> <button type="button" class="btn btn-danger"name="button"  (click)="logout()">Logout</button></li>
     </ul>
   </div>
+
 </nav>
 <div class="container-fluid">
   <router-outlet></router-outlet>

@@ -1,0 +1,19 @@
+<div>
+  <div fileDrop
+       [ngClass]="{'file-is-over': fileIsOver, 'file-uploading': uploading}"
+       (fileOver)="fileOver($event)"
+       (onFileDrop)="onFileDrop($event)">
+    <div>Drop an image to here</div>
+  </div>
+<div *ngFor="let thumb of thumbs | async">
+  <img [src]="thumb.url"/>
+  <p>
+      {{thumb.url}}
+  </p>
+</div>
+<div *ngFor="let image of images | async">
+  <img [src]="image.url"/>
+  <p>
+      {{image.url}}
+  </p>
+</div>

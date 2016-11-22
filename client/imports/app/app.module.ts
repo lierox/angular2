@@ -10,6 +10,8 @@ import { COMMENTS_DECLARATIONS } from './comments';
 import { TASKS_DECLARATIONS } from './tasks';
 import { USERS_DECLARATIONS } from './users';
 import { AUTH_DECLARATIONS } from './auth';
+import { IMAGES_DECLARATIONS } from './images';
+import { FileDropModule } from "angular2-file-drop";
 //import { AUTH_DECLARATIONS } from './login';
 
 @NgModule({
@@ -19,14 +21,16 @@ import { AUTH_DECLARATIONS } from './auth';
     ReactiveFormsModule,
     RouterModule.forRoot(routes),
     AccountsModule,
-    SortablejsModule
+    SortablejsModule,
+    FileDropModule
   ],
   declarations: [
     AppComponent,
     ...COMMENTS_DECLARATIONS,
     ...TASKS_DECLARATIONS,
     ...USERS_DECLARATIONS,
-    ...AUTH_DECLARATIONS
+    ...AUTH_DECLARATIONS,
+    ...IMAGES_DECLARATIONS
   ],
   providers: [
     ...ROUTES_PROVIDERS

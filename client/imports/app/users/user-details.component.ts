@@ -3,6 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import { MeteorObservable } from 'meteor-rxjs';
+import { Meteor } from 'meteor/meteor';
 
 import 'rxjs/add/operator/map';
 
@@ -69,6 +70,8 @@ export class UserDetailsComponent implements OnInit, OnDestroy{
         this.commentsSub.unsubscribe();
         this.tasksSub.unsubscribe();
     }
+
+
 
     removeComment(comment: Comment): void {
         if(!Meteor.userId()) {

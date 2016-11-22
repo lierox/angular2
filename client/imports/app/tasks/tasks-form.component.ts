@@ -45,6 +45,7 @@ export class TasksFormComponent implements OnInit {
       description: ['', Validators.required]
     });
     this.from = Meteor.user()['emails'][0]['address'];
+    console.log(this.from);
   }
 
   ngOnDestroy() {
