@@ -21,7 +21,7 @@ export class AppComponent {
     }
 
     ngOnInit(){
-
+        this.user='';
     }
     ngOnDestroy(){
     }
