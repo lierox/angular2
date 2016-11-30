@@ -3,16 +3,16 @@
 
     </div>
     <div class="col-md-4" style="border-left: 6px solid #aabbcc; background-color:#dfdfff">
-        <h2>Register</h2>
+        <h2>{{'Register' | translate}}</h2>
         <form [formGroup]="registerForm" (ngSubmit)="register()">
-            <p>Email: <input type="email" formControlName="email"></p>
-            <p>Password: <input type="password" formControlName="password"></p>
-            <p>Register as
-                <input type="radio" formControlName="userType" value="manager" > Manager
-                <input type="radio" formControlName="userType" value="intern"> Intern
+            <p>{{'Email' | translate}} <input type="email" formControlName="email"></p>
+            <p>{{'Password' | translate}} <input type="password" formControlName="password"></p>
+            <p>{{'Register as' | translate}}
+                <input type="radio" formControlName="userType" value="manager" > {{'Manager' | translate}}
+                <input type="radio" formControlName="userType" value="intern"> {{'Intern' | translate}}
             </p>
-            <p><button class="btn btn-success btn-default" type="submit">Register</button></p>
-            <p style="font-size:13px;"><a [routerLink]="['/login']">Back to Login Form</a></p>
+            <p><button class="btn btn-success btn-default" type="submit">{{'Register' | translate}}</button></p>
+            <p style="font-size:13px;"><a [routerLink]="['/login']">{{'Back to Login' | translate}}</a></p>
         </form>
     </div>
 

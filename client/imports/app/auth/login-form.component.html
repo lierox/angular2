@@ -1,14 +1,13 @@
 <div class="row" style="margin-top:50px; ">
     <div class="col-md-4">
-
     </div>
     <div class="col-md-4" style="border-left: 6px solid #aabbcc; background-color:#dfdfff">
-        <h2>Login</h2>
+        <h2>{{ 'Login' | translate }}</h2>
         <form [formGroup]="loginForm" (ngSubmit)="login()">
-            <p>Email: <input type="email" formControlName="email"></p>
-            <p>Password: <input type="password" formControlName="password"></p>
-            <p><button class="btn btn-success btn-default" type="submit">Login</button></p>
-            <p style="font-size:13px;"><a [routerLink]="['/register']">Register</a></p>
+            <p>{{'Email' | translate}} <input type="email" formControlName="email"></p>
+            <p>{{'Password' | translate}} <input type="password" formControlName="password"></p>
+            <p><button class="btn btn-success btn-default" type="submit">{{'Login' | translate}}</button></p>
+            <p style="font-size:13px;"><a [routerLink]="['/register']">{{'Register' | translate}}</a></p>
         </form>
     </div>
 

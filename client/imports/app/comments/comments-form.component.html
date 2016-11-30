@@ -1,5 +1,5 @@
 <form [formGroup]="addForm" (ngSubmit)="addComment()">
-    <label>Description</label>
+    <label>{{'Description' | translate}}</label>
     <input type="text" formControlName="description">
-    <button class="btn btn-success btn-default" type="submit">Log</button>
+    <button class="btn btn-success btn-default" type="submit">{{'Log' | translate}}</button>
 </form>

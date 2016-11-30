@@ -1,26 +1,26 @@
 <header *ngIf="user">
-    <h1>Details of {{user['emails'][0]['address']}}</h1>
+    <h1>{{user['emails'][0]['address']}}</h1>
     <div class="row"  style="margin-bottom:24px;">
         <div [hidden]="userId !== loggedInUserId" class="col-sm-6">
-            <h5><b>Add Log</b></h5>
+            <h5><b>{{'Add Log About Tasks' | translate}}</b></h5>
             <comments-form></comments-form>
         </div>
         <div [hidden]="userType !== 'manager'" class="col-sm-6">
-            <h5><b>Add Task</b></h5>
+            <h5><b>{{'Add Task' | translate}}</b></h5>
             <tasks-form></tasks-form>
         </div>
     </div>
     <div class="row">
         <div class="col-sm-3" style="">
-            <h4>Daily Log</h4>
+            <h4>{{'Logs' | translate}}</h4>
             <div style="border: 2px solid #bcbcbc;border-radius: 3px;background-color: #dedede;margin-bottom: 10px;" *ngFor="let comment of comments | async">
                 <p>{{comment.description}}</p>
-                <p><b>Logged on:</b>{{comment.date | date:'medium'}}</p>
+                <p><b>{{'Logged on' | translate}}: </b>{{comment.date | date:'medium'}}</p>
                 <div class="row">
                     <div class="col-sm-8">
                     </div>
                     <div class="col-sm-4">
-                        <button style="margin-bottom:8px;"class="btn btn-danger btn-sm" (click)="removeComment(comment)">Delete</button>
+                        <button style="margin-bottom:8px;"class="btn btn-danger btn-sm" (click)="removeComment(comment)">{{'Delete' | translate}}</button>
                     </div>
                 </div>
 
@@ -28,18 +28,18 @@
         </div>
 
         <div class="col-sm-3" >
-            <h4>Waiting</h4>
+            <h4>{{'Waiting' | translate}}</h4>
             <div *ngFor="let task of tasks | async">
                 <div *ngIf="task.state == 'waiting'" style="border: 2px solid #bcbcbc;border-radius: 3px;background-color: #dedede;margin-bottom: 10px;">
                     <p>{{task.description}}</p>
-                    <p><b>Manager:</b>{{task.from}}</p>
-                    <p><b>Assigned on:</b>{{task.date | date:'medium'}}</p>
+                    <p><b>{{'Manager' | translate}}: </b>{{task.from}}</p>
+                    <p><b>{{'Assigned on' | translate}}: </b>{{task.date | date:'medium'}}</p>
                     <div class="row">
                         <div class="col-sm-6">
                         </div>
                         <div class="col-sm-6">
-                            <button style="margin-bottom:8px;" class="btn btn-primary btn-sm" (click)="setCurrentTask(task)">Start</button>
-                            <button style="margin-bottom:8px;"  class="btn btn-danger btn-sm" (click)="removeTask(task)">Delete</button>
+                            <button style="margin-bottom:8px;" class="btn btn-primary btn-sm" (click)="setCurrentTask(task)">{{'Start' | translate}}</button>
+                            <button style="margin-bottom:8px;"  class="btn btn-danger btn-sm" (click)="removeTask(task)">{{'Delete' | translate}}</button>
                         </div>
                     </div>
                 </div>
@@ -47,18 +47,18 @@
         </div>
 
         <div class="col-sm-3" style="">
-            <h4>Current</h4>
+            <h4>{{'Current' | translate}}</h4>
             <div *ngFor="let task of tasks | async">
                 <div *ngIf="task.state == 'current'" style="border: 2px solid #bcbcbc;border-radius: 3px;background-color: #dedede;margin-bottom: 10px;">
                     <p>{{task.description}}</p>
-                    <p><b>Manager:</b>{{task.from}}</p>
-                    <p><b>Started on:</b>{{task.date | date:'medium'}}</p>
+                    <p><b>{{'Manager' | translate}}: </b>{{task.from}}</p>
+                    <p><b>{{'Started on' | translate}}: </b>{{task.date | date:'medium'}}</p>
                     <div class="row">
                         <div class="col-sm-6">
                         </div>
                         <div class="col-sm-6">
-                            <button style="margin-bottom:8px;" class="btn btn-success btn-sm" (click)="setDoneTask(task)">Done</button>
-                            <button style="margin-bottom:8px;" class="btn btn-warning btn-sm" (click)="setWaitingTask(task)">Back</button>
+                            <button style="margin-bottom:8px;" class="btn btn-success btn-sm" (click)="setDoneTask(task)">{{'Done' | translate}}</button>
+                            <button style="margin-bottom:8px;" class="btn btn-warning btn-sm" (click)="setWaitingTask(task)">{{'Back' | translate}}</button>
                         </div>
                     </div>
                 </div>
@@ -66,17 +66,17 @@
         </div>
 
         <div class="col-sm-3" style="">
-            <h4>Done</h4>
+            <h4>{{'Completed' | translate}}</h4>
             <div *ngFor="let task of tasks | async">
                 <div *ngIf="task.state == 'done'" style="border: 2px solid #bcbcbc;border-radius: 3px;background-color: #dedede;margin-bottom: 10px;">
                     <p>{{task.description}}</p>
-                    <p><b>Manager:</b>{{task.from}}</p>
-                    <p><b>Done on:</b>{{task.date | date:'medium'}}</p>
+                    <p><b>{{'Manager' | translate}}: </b>{{task.from}}</p>
+                    <p><b>{{'Done on' | translate}}: </b>{{task.date | date:'medium'}}</p>
                     <div class="row">
                         <div class="col-sm-8">
                         </div>
                         <div class="col-sm-4">
-                            <button style="margin-bottom:8px;" class="btn btn-warning btn-sm" (click)="setCurrentTask(task)">Back</button>
+                            <button style="margin-bottom:8px;" class="btn btn-warning btn-sm" (click)="setCurrentTask(task)">{{'Back' | translate}}</button>
                         </div>
                     </div>
                 </div>

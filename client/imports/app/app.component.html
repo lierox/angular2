@@ -5,11 +5,20 @@
     </div>
     <ul class="nav navbar-nav navbar-right-container">
 
-    <li *ngIf="user !== ''"> {{user}}<button type="button" style="margin-left:10px;"class="btn btn-danger btn-sm"name="button"  (click)="logout()">Logout</button></li>
+    <li *ngIf="user !== ''"> {{user}}<button type="button" style="margin-left:10px;"class="btn btn-danger btn-sm"name="button"  (click)="logout()">{{'Logout' | translate}}</button></li>
     </ul>
   </div>
 
 </nav>
 <div class="container-fluid">
   <router-outlet></router-outlet>
+  <div class="footer" style="text-align:center;overflow:hidden;margin-top:120px;">
+      <div class="btn-group">
+          <button *ngFor="let lang of supportedLangs"
+              (click)="selectLang(lang.value)"
+              class="btn btn-default" [class.btn-primary]="isCurrentLang(lang.value)">
+              {{ lang.display }}
+          </button>
+      </div>
+  </div>
 </div>

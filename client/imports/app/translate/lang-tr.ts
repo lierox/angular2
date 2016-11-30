@@ -1,0 +1,30 @@
+export const LANG_TR_NAME = 'tr';
+
+export const LANG_TR_TRANS = {
+    'Login': 'Giriş',
+    'Register':'Kayıt Ol',
+    'Email':'Eposta',
+    'Password':'Şifre',
+    'Register as': 'Kullanıcı Pozisyonu',
+    'Manager': 'Yönetici',
+    'Intern': 'Stajyer',
+    'Back to Login': 'Girişe Dön',
+    'Logout': 'Çıkış',
+    'Add Log About Tasks': 'Görevle Alakalı Yorum Ekle',
+    'Description': 'Açıklama',
+    'Log':'Ekle',
+    'Logs':'Yorumlar',
+    'Waiting':'Beklemede',
+    'Current':'Güncel',
+    'Done': 'Bitir',
+    'Completed': 'Tamamlanan',
+    'Delete':'Sil',
+    'Start': 'Başlat',
+    'Back': 'Geri Al',
+    'Logged on':'Oluşturulma',
+    'Assigned on':'Oluşturulma',
+    'Started on' :'Başlatılma',
+    'Done on': 'Bitirilme',
+    'Add': 'Ekle',
+    'Add Task': 'Görev Ekle'
+};

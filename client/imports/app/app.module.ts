@@ -12,6 +12,7 @@ import { USERS_DECLARATIONS } from './users';
 import { AUTH_DECLARATIONS } from './auth';
 import { IMAGES_DECLARATIONS } from './images';
 import { FileDropModule } from "angular2-file-drop";
+import { TRANSLATION_PROVIDERS, TranslatePipe, TranslateService }   from './translate';
 //import { AUTH_DECLARATIONS } from './login';
 
 @NgModule({
@@ -30,10 +31,13 @@ import { FileDropModule } from "angular2-file-drop";
     ...TASKS_DECLARATIONS,
     ...USERS_DECLARATIONS,
     ...AUTH_DECLARATIONS,
-    ...IMAGES_DECLARATIONS
+    ...IMAGES_DECLARATIONS,
+    TranslatePipe
   ],
   providers: [
-    ...ROUTES_PROVIDERS
+    ...ROUTES_PROVIDERS,
+    TRANSLATION_PROVIDERS,
+    TranslateService
   ],
   bootstrap: [
     AppComponent

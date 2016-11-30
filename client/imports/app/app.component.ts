@@ -5,6 +5,7 @@ import { Meteor } from 'meteor/meteor';
 import { Router, CanActivate } from '@angular/router';
 
 import { Tracker } from 'meteor/tracker';
+import { TranslateService } from './translate';
 
 
 @Component({
@@ -16,13 +17,37 @@ export class AppComponent {
     currentUser: Meteor.User;
     autorunComputation: Tracker.Computation;
     user : string;
-    constructor(private router: Router,private zone: NgZone) {
+
+    public translatedText: string;
+    public supportedLangs: any[];
+
+    constructor(private router: Router,private zone: NgZone, private _translate: TranslateService) {
       this._initAutorun();
     }
 
     ngOnInit(){
         this.user='';
+
+        // standing data
+      this.supportedLangs = [
+          { display: 'English', value: 'en' },
+          { display: 'Turkish', value: 'tr' }
+      ];
+
+      // set current langage
+      this.selectLang('tr');
     }
+
+    isCurrentLang(lang: string) {
+          // check if the selected lang is current lang
+          return lang === this._translate.currentLang;
+      }
+
+      selectLang(lang: string) {
+          // set current lang;
+          this._translate.use(lang);
+      }
+
     ngOnDestroy(){
     }
 
