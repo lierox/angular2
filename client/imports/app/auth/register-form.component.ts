@@ -35,7 +35,8 @@ export class RegisterFormComponent implements OnInit {
             email: this.registerForm.value.email,
             password: this.registerForm.value.password,
             profile:{
-                userType: this.registerForm.value.userType
+                userType: this.registerForm.value.userType,
+                language: 'en'
             }
         },function(error){
             if(error){

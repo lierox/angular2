@@ -3,20 +3,20 @@ import { InjectUser } from 'angular2-meteor-accounts-ui';
 import template from './app.component.html';
 import { Meteor } from 'meteor/meteor';
 import { Router, CanActivate } from '@angular/router';
-
 import { Tracker } from 'meteor/tracker';
 import { TranslateService } from './translate';
 
 
 @Component({
   selector: 'app',
-  template
+  template,
 })
 
 export class AppComponent {
     currentUser: Meteor.User;
     autorunComputation: Tracker.Computation;
     user : string;
+    language: string;
 
     public translatedText: string;
     public supportedLangs: any[];
@@ -27,15 +27,17 @@ export class AppComponent {
 
     ngOnInit(){
         this.user='';
+        this.language = localStorage.lang;
+        if(this.language){
+            this._translate.use(this.language);
+            Meteor.users.update({"_id":Meteor.userId()}, {$set:{"profile.language": this.language}});
+        }
 
         // standing data
       this.supportedLangs = [
           { display: 'English', value: 'en' },
           { display: 'Turkish', value: 'tr' }
       ];
-
-      // set current langage
-      this.selectLang('tr');
     }
 
     isCurrentLang(lang: string) {
@@ -46,6 +48,7 @@ export class AppComponent {
       selectLang(lang: string) {
           // set current lang;
           this._translate.use(lang);
+          localStorage.lang = lang;
       }
 
     ngOnDestroy(){
